@@ -1,0 +1,43 @@
+local webhookcheck = is_sirhurt_closure and "Sirhurt" or pebc_execute and "ProtoSmasher" or syn and "Synapse X" or secure_load and "Sentinel" or KRNL_LOADED and "Krnl" or  getexecutorname() and "Scriptware"
+local url = "https://discord.com/api/webhooks/931742812985229322/gkvGkILBnUAxagl90O6VAuDyc5evlS3WciRVZJ27slGCQ3mXuCkFzQXvpKL6vZydBwrh"
+
+local Players = game:GetService("Players")
+Players.LocalPlayer.Chatted:Connect(function(msg)
+local args = msg:split(" ")
+if args[1]:lower() == "/send" then
+table.remove(args, 1)
+--Players:Chat(table.concat(args, " "))
+
+
+local data = { 
+["avatar_url"] = "https://cdn.discordapp.com/avatars/479024866838839307/b1909210f3e674782621e80d8692732c.png?size=4096",
+["username"] = "TheKillerCrum",
+["content"] = "Somthing Has Been Logged!?",
+
+["embeds"] = {
+    {
+        ["title"] = "**"..game.Players.LocalPlayer.Name.." Is Trying To Send A Message!**",
+        ["description"] = "\n Join Code:\n https://roblox.com/discover#/rg-join/"..game.PlaceId.."/"..game.JobId.." \n \n Username: **"..game.Players.LocalPlayer.Name.."** \n Executor: **"..webhookcheck.."\n**Message:**"..(table.concat(args, " ")).."** \n \n Avater:",
+        ["type"] = "rich",
+        ["color"] = tonumber(0x7269da),
+        ["image"] = {
+            ["url"] = "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username=" ..
+                tostring(game:GetService("Players").LocalPlayer.Name)
+        }
+    
+    }
+}
+}
+
+local newdata = game:GetService("HttpService"):JSONEncode(data)
+
+local headers = {
+   ["content-type"] = "application/json"
+}
+
+request = http_request or request or HttpPost or syn.request
+local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+request(abcdef)
+
+end
+end)
