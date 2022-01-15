@@ -1,0 +1,47 @@
+
+lp = game.Players.LocalPlayer
+ms = lp:GetMouse() 
+ms.KeyDown:connect(function(key) 
+
+-- Hot Keys
+
+--if check1 == 0 then
+
+if key == "h" then 
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-402, 22, -284)
+
+elseif key == "q" then 
+game.Players:Chat("/unfling")
+
+elseif key == "t" then 
+    game.Players:Chat("/admin1")
+elseif key == "u" then 
+    game.Players:Chat("/admin2")
+elseif key == "i" then
+    game.Players:Chat("/armor")
+elseif key == "o" then
+    game.Players:Chat("/unadmin1")
+elseif key == "z" then
+    game.Players:Chat("/dumpster")
+elseif key == "x" then
+    game.Players:Chat("/death1")
+elseif key == "c" then
+    game.Players:Chat("/death2")
+elseif key == "b" then
+    game.Players:Chat("/trap1")
+elseif key == "n" then
+    game.Players:Chat("/random")
+elseif key == "m" then
+    game.Players:Chat("/cliff")
+elseif key == "," then
+    game.Players:Chat("/trap2")
+elseif key == "j" then
+    game.Players:Chat("/pvp")
+
+
+
+
+
+end
+end)
+
