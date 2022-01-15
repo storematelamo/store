@@ -1,0 +1,30 @@
+local player = game:service'Players'.LocalPlayer
+local function respawn()
+local character = player.Character
+death = character.HumanoidRootPart.Position
+character:FindFirstChild("Humanoid"):Destroy() 
+for i, v in pairs(character:GetChildren()) do 
+    if v:IsA("BasePart") or v:IsA("Accessory") then 
+        v:Destroy() 
+    end 
+end
+wait(8)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(death)
+game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Returned To Pos!", "All")
+
+end
+local function start_change()
+local character = player.Character
+repeat wait(1) until not character or character:FindFirstChildOfClass'Humanoid'
+if character then
+    local humanoid = character:FindFirstChildOfClass'Humanoid'
+    humanoid:GetPropertyChangedSignal('Health'):Connect(function()
+        if humanoid.Health < 1 then
+            respawn()
+        end
+    end)
+end
+end
+local character = player.Character or Player.CharacterAdded:Wait()
+start_change(character)
+player.CharacterAdded:Connect(start_change)
