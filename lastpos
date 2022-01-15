@@ -1,0 +1,24 @@
+
+local Player = game.Players.LocalPlayer
+local plrs = game:GetService('Players')
+local lp = plrs.LocalPlayer
+function onDamage(hum)
+    hum:GetPropertyChangedSignal('Health'):Connect(function()
+	death = game.Players.LocalPlayer.Character.HumanoidRootPart.Position	
+    end)
+end
+lp.CharacterAdded:Connect(function(char)
+    local hum = char:WaitForChild('Humanoid', 3)
+    if hum then
+        onDamage(hum)
+    end
+end)
+pcall(function()
+    onDamage(lp.Character.Humanoid)
+end)
+		
+Player.Chatted:connect(function(cht)
+    if cht:match("/lastpos") or cht:match("/prevpos) then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(death)
+			end
+	end)
