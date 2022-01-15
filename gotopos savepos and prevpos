@@ -1,0 +1,25 @@
+
+local Player = game.Players.LocalPlayer
+local Pos, PrevPos
+Player.Chatted:connect(function(cht)
+if cht:match("/savepos") then
+    game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Saved!", "all")
+    Pos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+elseif cht:match("/prevpos") then 
+    if PrevPos ~= nil then 
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(PrevPos)
+    else
+        game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("You Must Save A Position First!!", "all")
+    end
+elseif cht:match("/gotopos") then
+    PrevPos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+    if Pos ~= nil then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Pos)
+        game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Teleported!", "all")
+    else
+        
+        game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("You Must Save A Position First!!", "all")
+    end
+end
+end)
+
